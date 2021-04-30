@@ -1,0 +1,173 @@
+<div>
+  <div *ngIf="error" class="alert alert-danger" role="alert">
+    {{ errorMsg }}
+  </div>
+  <h3>Hotel: {{ hotel.address }}</h3>
+  <div class="submit-form">
+    <div *ngIf="!roomSubmitted && !roomFirstTime && !employeeEditing">
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field>
+            <mat-label>Room Number</mat-label>
+            <input matInput type="text" [(ngModel)]="room.roomId.roomNumber">
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field>
+            <mat-label>Capacity</mat-label>
+            <input matInput type="text" [(ngModel)]="room.capacity">
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field>
+            <mat-label>Price</mat-label>
+            <input matInput type="text" [(ngModel)]="room.price">
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field>
+            <mat-label>Extendable</mat-label>
+            <mat-select [(ngModel)]="room.extendable" name="exp">
+              <mat-option *ngFor="let exp of extendables" [value]="exp">
+                {{exp}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field>
+            <mat-label>View</mat-label>
+            <mat-select [(ngModel)]="room.view" name="vw">
+              <mat-option *ngFor="let vw of views" [value]="vw">
+                {{vw}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field>
+            <mat-label>Amenities</mat-label>
+            <mat-select [formControl]="amenitiesFC" multiple>
+              <mat-select-trigger>
+                {{amenitiesFC.value ? amenitiesFC.value[0] : ''}}
+                <span *ngIf="amenitiesFC.value?.length > 1">
+                  (+{{amenitiesFC.value.length - 1}} {{amenitiesFC.value?.length === 2 ? 'other' : 'others'}})
+                </span>
+              </mat-select-trigger>
+              <mat-option *ngFor="let amt of amenities" [value]="amt.amenity">{{amt.amenity}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <button (click)="saveRoom()" class="btn btn-success">Save New Room</button>
+    </div>
+
+    <div *ngIf="(roomSubmitted || roomFirstTime) &&  !employeeEditing">
+      <div *ngIf="roomSubmitted" class="alert alert-primary" role="alert">New room was added successfully!</div>
+      <button class="btn btn-success" (click)="newRoom()">Add New Room</button>
+    </div>
+  </div>
+
+  <div class="submit-form">
+    <div *ngIf="!employeeSubmitted && !employeeFirstTime && !roomEditing">
+      <div class="form-group">
+        <label for="firstname">First Name</label>
+        <input type="text" class="form-control" id="firstname" required [(ngModel)]="employee.firstName"
+          name="firstname" />
+        <label for="middlename">Middle Name</label>
+        <input type="text" class="form-control" id="middlename" required [(ngModel)]="employee.middleName"
+          name="middlename" />
+        <label for="lastname">Last Name</label>
+        <input type="text" class="form-control" id="lastname" required [(ngModel)]="employee.lastName"
+          name="lastname" />
+        <label for="address">Home Address</label>
+        <input type="text" class="form-control" id="address" required [(ngModel)]="employee.homeAddress"
+          name="address" />
+        <label for="sin">SIN</label>
+        <input type="text" class="form-control" id="sin" required [(ngModel)]="employee.sin" name="sin" />
+        <label for="role">Role</label>
+        <input type="text" class="form-control" id="role" required [(ngModel)]="employee.role" name="role" />
+        <label for="salary">Salary</label>
+        <input type="text" class="form-control" id="salary" required [(ngModel)]="employee.salary" name="salary" />
+        <label for="username">User Name</label>
+        <input type="text" class="form-control" id="username" required [(ngModel)]="employee.userName"
+          name="username" />
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" required [(ngModel)]="employee.password"
+          name="password" />
+      </div>
+
+      <button (click)="saveEmployee()" class="btn btn-success">Save New Employee</button>
+    </div>
+
+    <div *ngIf="(employeeSubmitted || employeeFirstTime) && !roomEditing">
+      <div *ngIf="employeeSubmitted" class="alert alert-primary" role="alert">Employee was added successfully!</div>
+      <button class="btn btn-success" (click)="newEmployee()">Add New Employee</button>
+    </div>
+  </div>
+
+  <div class="list row">
+    <div class="col-md-12">
+      <h4>Room List</h4>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let rm of hotel.rooms; let i = index">
+          <div class="badge-warning col-md-12" style="border-bottom:solid 5px gold;">
+            <div class="row">
+              <div class="col-md-2">roomNumber={{ rm.roomId.roomNumber }}</div>
+              <div class="col-md-2">capacity={{ rm.capacity }}</div>
+              <div class="col-md-2">extendable={{ rm.extendable }}</div>
+              <div class="col-md-4">view={{ rm.view }}</div>
+              <div class="col-md-2">price={{ rm.price }}</div>
+            </div>
+
+            <div class="list row">
+              <div class="col-md-12">
+                <ul class="list-group">
+                  <li class="list-group-item" *ngFor="let amt of rm.amenities" style="margin:0px;padding:0px">
+                    <div class="row">
+                      <div class="col-md-3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                      <div class="badge-warning col-md-6">{{ amt.amenity }}</div>
+                      <div class="col-md-3"></div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="list row">
+    <div class="col-md-12">
+      <h4>Employee List</h4>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let emp of hotel.employees; let i = index">
+          <div class="badge-warning col-md-12">
+            <div class="row">
+              <div class="col-md-3">employeeId={{ emp.employeeId }}</div>
+              <div class="col-md-3">firstName={{ emp.firstName }}</div>
+              <div class="col-md-3">middleName={{ emp.middleName }}</div>
+              <div class="col-md-3">lastName={{ emp.lastName }}</div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">role={{ emp.role }}</div>
+              <div class="col-md-3">user/pwd={{ emp.userName }}/{{ emp.password }}</div>
+              <div class="col-md-3">managerId={{ emp.managerId }}</div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">address={{ emp.homeAddress }}</div>
+              <div class="col-md-3">SIN={{ emp.sin }}</div>
+              <div class="col-md-3">salary={{ emp.salary }}</div>
+            </div>
+
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>

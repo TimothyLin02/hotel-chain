@@ -1,0 +1,78 @@
+<div *ngIf="rented"  class="alert alert-primary" role="alert">
+    Rented successfully! Total cost: ${{booking.cost}}
+</div>
+<div *ngIf="error" class="alert alert-danger" role="alert">
+    {{ errorMsg }}
+</div>
+<h4>Welcome!</h4>
+<div class="row" style="margin-bottom: 15px;">
+    <div class="col-md-2" style="padding-top:10px; padding-bottom: 0px; padding-right: 0px;">
+        Booking Id:
+    </div>
+    <div class="col-md-4">
+        <mat-form-field>
+            <input matInput type="text" [(ngModel)]="bookingId">
+            <button mat-button *ngIf="bookingId" matSuffix mat-icon-button aria-label="Clear" (click)="bookingId=''">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+    <div class="col-md-6">
+        <button style="background-color: green; color: white;" mat-raised-button (click)="findBooking()">Find
+            Booking</button>
+    </div>
+</div>
+
+<div *ngIf="booking && customer">
+    <h5>Guest:</h5>
+    <div class="badge-warning col-md-12" style="margin-bottom: 15px;">
+        <div class="row">
+            <div class="col-md-3">custid={{ customer.custID }}</div>
+            <div class="col-md-3">firstName={{ customer.firstName }}</div>
+            <div class="col-md-3">lastName={{ customer.lastName }}</div>
+            <div class="col-md-3">SIN={{ customer.sin }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">address={{ customer.address }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">userName={{ customer.userName }}</div>
+            <div class="col-md-3">password={{ customer.password }}</div>
+            <div class="col-md-6">registrationDate={{ customer.registrationDate }}</div>
+        </div>
+    </div>
+    <h5>Times:</h5>
+    <div class="badge-warning col-md-12" style="margin-bottom: 15px;">
+        <div class="row">
+            <div class="col-md-4">start={{ booking.startDate }}</div>
+            <div class="col-md-4">end={{ booking.endDate }}</div>
+            <div class="col-md-4">timeStamp={{ booking.timeStamp }}</div>
+        </div>
+    </div>
+    <h5>Booked Rooms:</h5>
+    <div class="row">
+        <div class="col-md-12">
+            <mat-selection-list #roomList [(ngModel)]="selectedRooms" (selectionChange)="onRoomChange()">
+                <mat-list-option *ngFor="let rm of rooms" [value]="rm.roomId.roomNumber">
+                    <div class="row">
+                        <div class="col-md-2" style="background-color: gold;">roomNumber={{ rm.roomId.roomNumber }}
+                        </div>
+                        <div class="col-md-2" style="background-color: gold;">capacity={{ rm.capacity }}</div>
+                        <div class="col-md-2" style="background-color: gold;">extendable={{ rm.extendable }}</div>
+                        <div class="col-md-4" style="background-color: gold;">view={{ rm.view }}</div>
+                        <div class="col-md-2" style="background-color: gold;">price={{ rm.price }}</div>
+                    </div>
+                </mat-list-option>
+            </mat-selection-list>
+        </div>
+    </div>
+    <h5>Rent:</h5>
+    <div class="col-md-12" style="margin-bottom: 15px;">
+        <div class="row">
+            <div class="badge-warning col-md-4">Total Costs: ${{ booking.cost }}</div>
+            <div class="col-md-4">
+                <button style="background-color: green; color: white;" mat-raised-button (click)="rent()">Rent!</button>
+                    </div>
+        </div>
+    </div>
+</div>

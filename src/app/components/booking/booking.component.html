@@ -1,0 +1,55 @@
+<div *ngIf="booking.bookingId"  class="alert alert-primary" role="alert">
+  Booked successfully! Booking ID: <span style="background-color:pink;">{{booking.bookingId}}</span>, Total cost: ${{booking.cost}}
+</div>
+<div *ngIf="error" class="alert alert-danger" role="alert">
+  {{ errorMsg }}
+</div>
+<h2>Booking!</h2>
+<div class="row">
+  <div class="col-md-4">
+    <mat-form-field appearance="fill">
+      <mat-label>Customer</mat-label>
+      <mat-select [(ngModel)]="selectedCustID" name="cust">
+        <mat-option *ngFor="let cust of customers" [value]="cust.custID">
+          id={{cust.custID}}, {{cust.firstName}} {{cust.lastName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="col-mid-8">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter a date range</mat-label>
+      <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+        <input matStartDate formControlName="start" placeholder="Start date">
+        <input matEndDate formControlName="end" placeholder="End date">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+
+      <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+      <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+    </mat-form-field>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <h4>Available Rooms:</h4>
+    <mat-selection-list #roomList [(ngModel)]="selectedRooms">
+      <mat-list-option *ngFor="let rm of rooms" [value]="rm.roomId.roomNumber">
+        <div class="row">
+          <div class="col-md-2" style="background-color: gold;">roomNumber={{ rm.roomId.roomNumber }}</div>
+          <div class="col-md-2" style="background-color: gold;">capacity={{ rm.capacity }}</div>
+          <div class="col-md-2" style="background-color: gold;">extendable={{ rm.extendable }}</div>
+          <div class="col-md-4" style="background-color: gold;">view={{ rm.view }}</div>
+          <div class="col-md-2" style="background-color: gold;">price={{ rm.price }}</div>
+        </div>
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <button style="background-color: green; color: white;" mat-raised-button (click)="book()">Book!</button>
+  </div>
+</div>

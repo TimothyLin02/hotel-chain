@@ -1,0 +1,96 @@
+<div>
+  <div *ngIf="error" class="alert alert-danger" role="alert">
+    {{ errorMsg }}
+  </div>
+  <h3>Hotel Brand: {{ hotelBrand.hotelName }}</h3>
+  <div class="submit-form">
+    <div *ngIf="!submitted && !firstTime">
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" class="form-control col-md-3" id="address" required [(ngModel)]="hotel.address"
+          name="address" />
+        <label for="phoneNumber">Phone Number</label>
+        <input type="text" class="form-control col-md-3" id="phoneNumber" required [(ngModel)]="hotel.phoneNumber"
+          name="phoneNumber" />
+        <label for="email">Email</label>
+        <input type="text" class="form-control col-md-3" id="email" required [(ngModel)]="hotel.email" name="email" />
+        <label for="stars">Stars</label>
+        <input type="text" class="form-control col-md-3" id="stars" required [(ngModel)]="hotel.stars" name="stars" />
+      </div>
+
+      <button (click)="saveLocation()" class="btn btn-success">Save New Location</button>
+    </div>
+
+    <div *ngIf="submitted || firstTime">
+      <div *ngIf="submitted" class="alert alert-primary" role="alert">New location was added successfully!</div>
+      <button class="btn btn-success" (click)="newLocation()">Add New Location</button>
+    </div>
+  </div>
+
+  <div class="list row">
+    <div class="col-md-12" *ngIf="hotelBrand?.hotels">
+      <h4>Location List</h4>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let h of hotelBrand?.hotels; let i = index"
+          [class.active]="i == currentIndex">
+
+          <div class="row">
+            <div class="col-md-10">
+              <a class="badge badge-warning col-md-12"
+                style="text-align: left; font-size: 16px; font-weight: normal; padding-top:5px; padding-bottom:5px;"
+                routerLink="/locationdetails/{{ h.hotelId }}" [state]=h>
+                <div class="row">
+                  <div class="col-md-1">id={{ h.hotelId }}</div>
+                  <div class="col-md-1">stars={{ h.stars }}</div>
+                  <div class="col-md-2">rooms={{ h.totalNumberOfRooms }}</div>
+                  <div class="col-md-8">email={{ h.email }}</div>
+                </div>
+                <div class="row">
+                  <div class="col-md-8">address={{ h.address }}</div>
+                  <div class="col-md-4">phoneNumber={{ h.phoneNumber }}</div>
+                </div>
+
+
+                <div class="list row">
+                  <div class="col-md-12">
+                    <ul class="list-group">
+                      <li class="list-group-item" *ngFor="let amt of h.amenities" style="margin:0px;padding:0px">
+                        <div class="row">
+                          <div class="col-md-3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                          <div class="badge-warning col-md-6">{{ amt.amenity }}</div>
+                          <div class="col-md-3"></div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+
+              </a>
+            </div>
+
+            <div class="col-md-2" style="margin-left:0px;padding-left:0px">
+
+              <ul style="list-style-type:none; margin-left:0px;padding-left:0px">
+                <li>
+                  <a class="badge badge-warning col-md-12"
+                    style="font-size: 16px; font-weight: normal; background-color:green;color:white;margin-bottom:10px;"
+                    routerLink="/booking/{{ h.hotelId }}" [state]=h>Booking
+                  </a>
+                </li>
+                <li>
+                  <a class="badge badge-warning col-md-12"
+                    style="font-size: 16px; font-weight: normal; background-color:green;color:white;"
+                    routerLink="/walking/{{ h.hotelId }}" [state]=h>Renting
+                  </a>
+                </li>
+              </ul>
+
+
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

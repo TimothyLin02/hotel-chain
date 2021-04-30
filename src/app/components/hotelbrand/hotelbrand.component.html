@@ -1,0 +1,54 @@
+<div>
+  <div *ngIf="error" class="alert alert-danger" role="alert">
+    {{ errorMsg }}
+  </div>
+  <div class="submit-form">
+      <div *ngIf="!submitted && !firstTime">
+        <div class="form-group">
+          <label for="brandname">Hotel Brand Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="brandname"
+            required
+            [(ngModel)]="hotelBrand.hotelName"
+            name="brandname"
+          />
+        </div>
+  
+        <button (click)="saveBrand()" class="btn btn-success">Save New Brand</button>
+      </div>
+  
+      <div *ngIf="submitted || firstTime">
+        <div *ngIf="submitted" class="alert alert-primary" role="alert">Brand was added successfully!</div>
+        <button class="btn btn-success" (click)="newBrand()">Add New Brand</button>
+      </div>
+    </div>
+
+    <div class="list row">
+        <div class="col-md-8">
+          <h4>Hotel Brand List</h4>
+          <ul class="list-group">
+            <li
+              class="list-group-item"
+              *ngFor="let hb of hotelBrands; let i = index"
+              [class.active]="i == currentIndex"
+            >
+            <div><a
+              class="badge badge-warning col-md-12" 
+              style="text-align: left; font-size: 16px; font-weight: bold; padding-top:5px; padding-bottom:5px;"
+              routerLink="/hotel/{{ hb.brandId }}"
+              [state]=hb
+            >
+            <div class="row">
+              <div class="col-md-2">id={{ hb.brandId }}</div>
+              <div class="col-md-6">name={{ hb.hotelName }}</div>
+            </div>
+                
+            </a></div>
+            </li>
+          </ul>
+        </div>
+     </div>
+  </div>
+  

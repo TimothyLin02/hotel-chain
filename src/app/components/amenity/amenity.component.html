@@ -1,0 +1,51 @@
+<div>
+    <div *ngIf="error" class="alert alert-danger" role="alert">
+      {{ errorMsg }}
+    </div>
+    <div class="submit-form">
+        <div *ngIf="!submitted && !firstTime">
+          <div class="form-group">
+            <label for="amenity">Amenity</label>
+            <input
+              type="text"
+              class="form-control"
+              id="amenity"
+              required
+              [(ngModel)]="amenity.amenity"
+              name="amenity"
+            />
+          </div>
+    
+          <button (click)="saveAmenity()" class="btn btn-success">Save New Amenity</button>
+        </div>
+    
+        <div *ngIf="submitted || firstTime">
+          <div *ngIf="submitted" class="alert alert-primary" role="alert">Amenity was added successfully!</div>
+          <button class="btn btn-success" (click)="newAmenity()">Add New Amenity</button>
+        </div>
+      </div>
+  
+      <div class="list row">
+          <div class="col-md-8">
+            <h4>Amenity List</h4>
+            <ul class="list-group">
+              <li
+                class="list-group-item"
+                *ngFor="let hb of amenities; let i = index"
+              >
+              <div
+                class="badge badge-warning col-md-12" 
+                style="text-align: left; font-size: 16px; font-weight: bold; padding-top:5px; padding-bottom:5px;"
+              >
+              <div class="row">
+                <div class="col-md-2">id={{ hb.amenityId }}</div>
+                <div class="col-md-6">name={{ hb.amenity }}</div>
+              </div>
+                  
+            </div>
+              </li>
+            </ul>
+          </div>
+       </div>
+    </div>
+    

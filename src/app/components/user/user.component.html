@@ -1,0 +1,64 @@
+<div *ngIf="error" class="alert alert-danger" role="alert">
+    {{ errorMsg }}
+</div>
+<h4>Audit!</h4>
+<div class="row" style="margin-bottom: 15px;">
+    <div class="col-md-2" style="padding-top:10px; padding-bottom: 0px; padding-right: 0px;">
+        Booking Id:
+    </div>
+    <div class="col-md-4">
+        <mat-form-field>
+            <input matInput type="text" [(ngModel)]="bookingId">
+            <button mat-button *ngIf="bookingId" matSuffix mat-icon-button aria-label="Clear" (click)="bookingId=''">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+    <div class="col-md-6">
+        <button style="background-color: green; color: white;" mat-raised-button (click)="findBooking()">Find
+            Booking</button>
+    </div>
+</div>
+
+<div class="list row">
+    <div class="col-md-12">
+        <h4>Booking History</h4>
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let bk of bookings; let i = index">
+                <div class="badge-warning col-md-12">
+                    <div class="row">
+                        <div class="col-md-3">bookingId={{ bk.bookingId }}</div>
+                        <div class="col-md-3" style="background-color:pink">state={{ bk.state }}</div>
+                        <div class="col-md-3">custID={{ bk.custID }}</div>
+                        <div class="col-md-3">servicedBy={{ bk.servicedBy }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">startDate={{ bk.startDate }}</div>
+                        <div class="col-md-3">endDate={{ bk.endDate }}</div>
+                        <div class="col-md-3">timeStamp={{ bk.timeStamp }}</div>
+                        <div class="col-md-3">cost={{ bk.cost }}</div>
+                    </div>
+                </div>
+
+                <div class="list row">
+                    <div class="col-md-12">
+                        <h4>Room List</h4>
+                        <ul class="list-group">
+                            <li class="list-group-item" *ngFor="let rm of bk.bookedRooms">
+                                <div class="badge-warning col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-2">roomNumber={{ rm.roomId.roomNumber }}</div>
+                                        <div class="col-md-2">capacity={{ rm.capacity }}</div>
+                                        <div class="col-md-2">extendable={{ rm.extendable }}</div>
+                                        <div class="col-md-4">view={{ rm.view }}</div>
+                                        <div class="col-md-2">price={{ rm.price }}</div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
