@@ -1,1 +1,1 @@
-# hotel-chain
+# hotel-chain-angular
