@@ -11,6 +11,7 @@ import { CustomerComponent } from './components/customer/customer.component';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { LocationDetailsComponent } from './components/location-details/location-details.component';
 import { BookingComponent } from './components/booking/booking.component';
+import { LoginComponent } from './components/login/login.component';
 import { WalkingComponent } from './components/walking/walking.component';
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'checkin', component: CheckinComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'audit', component: UserComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'walking/:id', component: WalkingComponent },
 ];
 

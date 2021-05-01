@@ -24,11 +24,10 @@
         <label for="password">Password</label>
         <input type="password" class="form-control" id="password" required [(ngModel)]="customer.password"
           name="password" />
-          <label for="phoneNumber">Phone Number</label>
-          <input type="text" class="form-control" id="password" required [(ngModel)]="customer.phoneNumber"
-            name="phoneNumber" />
-        </div>
-
+        <label for="phoneNumber">Phone Number</label>
+        <input type="text" class="form-control" id="password" required [(ngModel)]="customer.phoneNumber"
+          name="phoneNumber" />
+      </div>
       <button (click)="saveCustomer()" class="btn btn-success">Save New Customer</button>
     </div>
 

@@ -32,6 +32,7 @@ import { CancelComponent } from './components/cancel/cancel.component';
 import { AmenityComponent } from './components/amenity/amenity.component';
 import { LocationDetailsComponent } from './components/location-details/location-details.component';
 import { WalkingComponent } from './components/walking/walking.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { WalkingComponent } from './components/walking/walking.component';
     CancelComponent,
     AmenityComponent,
     LocationDetailsComponent,
-    WalkingComponent
+    WalkingComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

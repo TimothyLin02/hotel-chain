@@ -1,0 +1,44 @@
+<div>
+    <h3>Login</h3>
+    <div class="form-group">
+        <input type="text" class="form-control" id="userName" required [(ngModel)]="login.userName" name="username" placeholder="username"/>
+        <input type="text" class="form-control" id="password" required [(ngModel)]="login.password" name="password" placeholder="password"/>
+    </div>
+    <button (click)="doLogin()" class="btn btn-success">Login</button>
+    <div *ngIf="customer === null" class="alert alert-primary" role="alert">
+        Login fail!
+    </div>
+    <div *ngIf="customer != null && customer.custID" class="alert alert-primary" role="alert">
+        <h3>Login success!</h3>
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">custID</th>
+                    <th scope="col">firstName</th>
+                    <th scope="col">lastName</th>
+                    <th scope="col">SIN</th>
+                    <th scope="col">brandID</th>
+                    <th scope="col">phone</th>
+                    <th scope="col">address</th>
+                    <th scope="col">userName</th>
+                    <th scope="col">password</th>
+                    <th scope="col">registrationDate</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{customer.custID}}</td>
+                    <td>{{customer.firstName}}</td>
+                    <td>{{customer.lastName}}</td>
+                    <td>{{customer.sin}}</td>
+                    <td>{{customer.brandId}}</td>
+                    <td>{{customer.phoneNumber}}</td>
+                    <td>{{customer.address}}</td>
+                    <td>{{customer.userName}}</td>
+                    <td>{{customer.password}}</td>
+                    <td>{{customer.registrationDate}}</td>
+                </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
