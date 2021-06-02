@@ -12,6 +12,7 @@ import { EmployeeComponent } from './components/employee/employee.component';
 import { LocationDetailsComponent } from './components/location-details/location-details.component';
 import { BookingComponent } from './components/booking/booking.component';
 import { LoginComponent } from './components/login/login.component';
+import { AvailableRoomsComponent } from './components/available-rooms/available-rooms.component';
 import { WalkingComponent } from './components/walking/walking.component';
 
 const routes: Routes = [
@@ -30,7 +31,8 @@ const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent },
   { path: 'audit', component: UserComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'walking/:id', component: WalkingComponent },
+  { path: 'available-rooms', component: AvailableRoomsComponent },
+  { path: 'walking/:id', component: WalkingComponent }
 ];
 
 @NgModule({

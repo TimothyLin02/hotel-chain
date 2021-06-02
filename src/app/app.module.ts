@@ -33,6 +33,7 @@ import { AmenityComponent } from './components/amenity/amenity.component';
 import { LocationDetailsComponent } from './components/location-details/location-details.component';
 import { WalkingComponent } from './components/walking/walking.component';
 import { LoginComponent } from './components/login/login.component';
+import { AvailableRoomsComponent } from './components/available-rooms/available-rooms.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { LoginComponent } from './components/login/login.component';
     AmenityComponent,
     LocationDetailsComponent,
     WalkingComponent,
-    LoginComponent
+    LoginComponent,
+    AvailableRoomsComponent
   ],
   imports: [
     BrowserModule,
