@@ -18,22 +18,24 @@ import {MatIconModule} from '@angular/material/icon';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserComponent } from './components/user/user.component';
-import { HotelComponent } from './components/hotel/hotel.component';
-import { HotelBrandComponent } from './components/hotelbrand/hotelbrand.component';
+import { UserComponent } from './pages/user/user.component';
+import { HotelComponent } from './pages/hotel/hotel.component';
+import { HotelBrandComponent } from './pages/hotelbrand/hotelbrand.component';
 import { HotelBrandDetailsComponent } from './components/hotel-brand-details/hotel-brand-details.component';
 import { RoomComponent } from './components/room/room.component';
-import { CustomerComponent } from './components/customer/customer.component';
+import { CustomerComponent } from './pages/customer/customer.component';
 import { EmployeeComponent } from './components/employee/employee.component';
-import { BookingComponent } from './components/booking/booking.component';
-import { CheckinComponent } from './components/checkin/checkin.component';
-import { CheckoutComponent } from './components/checkout/checkout.component';
+import { BookingComponent } from './pages/booking/booking.component';
+import { CheckinComponent } from './pages/checkin/checkin.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { CancelComponent } from './components/cancel/cancel.component';
-import { AmenityComponent } from './components/amenity/amenity.component';
-import { LocationDetailsComponent } from './components/location-details/location-details.component';
-import { WalkingComponent } from './components/walking/walking.component';
-import { LoginComponent } from './components/login/login.component';
-import { AvailableRoomsComponent } from './components/available-rooms/available-rooms.component';
+import { AmenityComponent } from './pages/amenity/amenity.component';
+import { LocationDetailsComponent } from './pages/location-details/location-details.component';
+import { WalkingComponent } from './pages/walking/walking.component';
+import { LoginComponent } from './pages/login/login.component';
+import { AppNavbarComponent } from './components/app-navbar/app-navbar.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+//import { AvailableRoomsComponent } from './components/available-rooms/available-rooms.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,9 @@ import { AvailableRoomsComponent } from './components/available-rooms/available-
     LocationDetailsComponent,
     WalkingComponent,
     LoginComponent,
-    AvailableRoomsComponent
+    AppNavbarComponent,
+    HomePageComponent,
+//    AvailableRoomsComponent
   ],
   imports: [
     BrowserModule,

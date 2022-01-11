@@ -1,22 +1,23 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UserComponent } from './components/user/user.component';
-import { HotelComponent } from './components/hotel/hotel.component';
-import { HotelBrandComponent } from './components/hotelbrand/hotelbrand.component';
-import { CheckinComponent } from './components/checkin/checkin.component';
-import { CheckoutComponent } from './components/checkout/checkout.component';
+import { UserComponent } from './pages/user/user.component';
+import { HotelComponent } from './pages/hotel/hotel.component';
+import { HotelBrandComponent } from './pages/hotelbrand/hotelbrand.component';
+import { CheckinComponent } from './pages/checkin/checkin.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { RoomComponent } from './components/room/room.component';
-import { AmenityComponent } from './components/amenity/amenity.component';
-import { CustomerComponent } from './components/customer/customer.component';
+import { AmenityComponent } from './pages/amenity/amenity.component';
+import { CustomerComponent } from './pages/customer/customer.component';
 import { EmployeeComponent } from './components/employee/employee.component';
-import { LocationDetailsComponent } from './components/location-details/location-details.component';
-import { BookingComponent } from './components/booking/booking.component';
-import { LoginComponent } from './components/login/login.component';
-import { AvailableRoomsComponent } from './components/available-rooms/available-rooms.component';
-import { WalkingComponent } from './components/walking/walking.component';
+import { LocationDetailsComponent } from './pages/location-details/location-details.component';
+import { BookingComponent } from './pages/booking/booking.component';
+import { LoginComponent } from './pages/login/login.component';
+//import { AvailableRoomsComponent } from './components/available-rooms/available-rooms.component';
+import { WalkingComponent } from './pages/walking/walking.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'tutorials', pathMatch: 'full' },
+  { path: '', component: HomePageComponent },
   { path: 'user', component: UserComponent },
   { path: 'hotelbrand', component: HotelBrandComponent },
   { path: 'hotel/:id', component: HotelComponent },
@@ -31,7 +32,7 @@ const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent },
   { path: 'audit', component: UserComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'available-rooms', component: AvailableRoomsComponent },
+//  { path: 'available-rooms', component: AvailableRoomsComponent },
   { path: 'walking/:id', component: WalkingComponent }
 ];
 
