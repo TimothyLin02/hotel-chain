@@ -1,0 +1,11 @@
+{
+  "defaultProject": "HotelDB",
+  "projects": {
+    "HotelDB": {
+      "name": "HotelDB",
+      "integrations": {},
+      "type": "angular"
+    }
+  }
+  
+}
