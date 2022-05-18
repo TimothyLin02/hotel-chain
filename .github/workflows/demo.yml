@@ -1,0 +1,17 @@
+name: build
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "triggered by a ${{ github.event_name }} event"
+      - run: echo "runs on ${{ runner.os }}"
+      - run: echo "branch ${{ github.ref }}"
+      - uses: actions/checkout@v2
+      - run: echo "repository ${{ github.repository }} has been cloned to runner"
+      - run: echo "job status ${{ job.status }}"
+      #- run: npm config set registry http://artifacts-scm.dstcorp.net/artifactory/api/npm/npm-repos/
+      #- run: npm install
+      
